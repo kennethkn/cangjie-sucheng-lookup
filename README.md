@@ -10,7 +10,7 @@
 * Automatic conversions while typing
 * Customizable output format options
 * Clear button for instant input field clearing (with 5-second undo option)
-* Straightforward and elegant UI
+* Straightforward and elegant UI (with dark mode!)
 
 ## :bulb: Try It
 
