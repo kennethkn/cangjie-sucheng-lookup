@@ -1,6 +1,8 @@
-# :arrows_counterclockwise: Chinese to Cangjie/Sucheng Converter (C2CJ/SC)
-
-The ultimate tool for looking up Cangjie/Sucheng codes of Chinese characters, designed with productivity use cases in mind.
+<div align="center">
+  <img src="favicon.ico" width="128" height="128" />
+  <h3>🔄 Chinese to Cangjie/Sucheng Converter (C2CJ/SC)</h3>
+  <p>The ultimate tool for looking up Cangjie/Sucheng codes of Chinese characters, designed with productivity use cases in mind.</p>
+</div>
 
 ## :rocket: Features Overview
 
