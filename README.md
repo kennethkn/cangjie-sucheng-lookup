@@ -10,6 +10,10 @@ The ultimate tool for looking up Cangjie/Sucheng codes of Chinese characters, de
 * Clear button for instant input field clearing (with 5-second undo option)
 * Straightforward and elegant UI
 
+## :zap: Try it
+
+<https://kennethkn.github.io/chinese-to-cangjie-sucheng-converter/>
+
 ## :handshake: Contributing
 
 If you find any bugs or have suggestions for improvement, please feel free to create an issue.
