@@ -138,7 +138,7 @@ function App() {
             Email
           </a>
         </div>
-        <div className="mb-3 flex justify-center pt-5 font-mono text-2xl lg:mb-4">
+        <div className="mb-3 mt-5 flex justify-center font-mono text-2xl lg:mb-4">
           Chinese to Cangjie/Sucheng <br className="lg:hidden" />
           Converter (C2CJ/SC)
         </div>
