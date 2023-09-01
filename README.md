@@ -12,7 +12,7 @@
 * Clear button for instant input field clearing (with 5-second undo option)
 * Straightforward and elegant UI
 
-## :bulb: Try it
+## :bulb: Try It
 
 <https://kennethkn.github.io/chinese-to-cangjie-sucheng-converter/>
 
