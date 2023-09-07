@@ -21,4 +21,4 @@
 
 If you find any bugs or have suggestions for improvement, please feel free to create an issue.
 
- *p.s. Star this project if it helped, and follow me on my socials!* 😉
+*p.s. Star this project if it helped, and follow me on my socials!* 😉
