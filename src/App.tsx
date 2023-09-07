@@ -74,6 +74,7 @@ function App() {
     setUndoBtnCountdown(5)
     setResetBtnClicked(false)
     clearInterval(undoTimerRef.current!)
+    document.getElementById('text')?.focus()
   }, [oldText])
 
   useEffect(() => {
