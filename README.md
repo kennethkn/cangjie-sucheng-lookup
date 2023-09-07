@@ -11,6 +11,7 @@
 * Customizable output format options
 * Clear button for instant input field clearing (with 5-second undo option)
 * Straightforward and elegant UI (with dark mode!)
+* No ads and open source
 
 ## :bulb: Try It
 
