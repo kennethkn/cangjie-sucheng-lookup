@@ -4,9 +4,18 @@ import OutputCard from './OutputCard'
 function App() {
   const [text, setText] = useState('')
   const [oldText, setOldText] = useState('')
-  const [useSucheng, setUseSucheng] = useState(false)
-  const [showChi, setShowChi] = useState(true)
-  const [showEng, setShowEng] = useState(true)
+  const [useSucheng, setUseSucheng] = useState(() => {
+    const data = localStorage.getItem('useSucheng')
+    return data ? data === 'true' : false
+  })
+  const [showChi, setShowChi] = useState(() => {
+    const data = localStorage.getItem('showChi')
+    return data ? data === 'true' : true
+  })
+  const [showEng, setShowEng] = useState(() => {
+    const data = localStorage.getItem('showEng')
+    return data ? data === 'true' : true
+  })
   const [output, setOutput] = useState<string[][]>([])
   const [resetBtnClicked, setResetBtnClicked] = useState(false)
   const [UndoBtnCountdown, setUndoBtnCountdown] = useState(5)
@@ -149,7 +158,11 @@ function App() {
               type="checkbox"
               id="use-sucheng"
               className="mr-1"
-              onChange={() => setUseSucheng(!useSucheng)}></input>
+              onChange={() => {
+                localStorage.setItem('useSucheng', (!useSucheng).toString())
+                setUseSucheng(!useSucheng)
+              }}
+              defaultChecked={useSucheng}></input>
             Use Sucheng/Quick
           </label>
           <label htmlFor="show-chi" className="flex items-center">
@@ -157,8 +170,11 @@ function App() {
               type="checkbox"
               id="show-chi"
               className="mr-1"
-              onChange={() => setShowChi(!showChi)}
-              defaultChecked></input>
+              onChange={() => {
+                localStorage.setItem('showChi', (!showChi).toString())
+                setShowChi(!showChi)
+              }}
+              defaultChecked={showChi}></input>
             Show Chinese Code
           </label>
           <label htmlFor="show-eng" className="flex items-center">
@@ -166,8 +182,11 @@ function App() {
               type="checkbox"
               id="show-eng"
               className="mr-1"
-              onChange={() => setShowEng(!showEng)}
-              defaultChecked></input>
+              onChange={() => {
+                localStorage.setItem('showEng', (!showEng).toString())
+                setShowEng(!showEng)
+              }}
+              defaultChecked={showEng}></input>
             Show English Code
           </label>
         </div>
