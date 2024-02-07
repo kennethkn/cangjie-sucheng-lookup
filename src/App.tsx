@@ -151,7 +151,7 @@ function App() {
         Chinese to Cangjie/Sucheng <br className="lg:hidden" />
         Converter (C2CJ/SC)
       </div>
-      <div className="sticky top-0 flex justify-between bg-white pb-1 pt-1 dark:bg-black lg:h-9">
+      <div className="flex justify-between bg-white pb-1 pt-1 dark:bg-black lg:h-9">
         <div className="flex flex-col pl-0.5 lg:flex-row lg:space-x-3">
           <label htmlFor="use-sucheng" className="flex items-center">
             <input
@@ -208,7 +208,7 @@ function App() {
         aria-label="Chinese text to be converted"
         onChange={handleTextChange}
         value={text}
-        className="sticky top-20 mb-2 h-36 overscroll-contain rounded-none border-2 bg-neutral-50 p-1 shadow-md focus:border-neutral-900 focus:outline-none dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-neutral-900 dark:focus:border-neutral-300 dark:focus:shadow-neutral-600 sm:mb-1 lg:top-9"
+        className="sticky top-0 mb-2 h-36 overscroll-contain rounded-none border-2 bg-neutral-50 p-1 shadow-md focus:border-neutral-900 focus:outline-none dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-neutral-900 dark:focus:border-neutral-300 dark:focus:shadow-neutral-600 sm:mb-1 lg:top-9"
         id="text"
         autoFocus></textarea>
       <div className="grid grid-cols-3 gap-2 sm:pt-1 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-12">
