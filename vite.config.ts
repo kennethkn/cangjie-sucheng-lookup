@@ -9,5 +9,5 @@ export default defineConfig({
       id: 'G-V7JPEKXC90',
     },
   })],
-  base: '/chinese-to-cangjie-sucheng-converter/'
+  base: '/cangjie-sucheng-lookup/'
 })
