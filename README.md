@@ -12,7 +12,7 @@
   <img src="./screenshot/light.jpeg" alt="App Preview (Light)" width="256" />
 </div>
 
-## :rocket: Features
+<br>
 
 - Live conversions while typing
 - Customizable output formats
@@ -20,11 +20,7 @@
 - Elegant design with automatic light/dark mode
 - No ads & open source
 
-## :bulb: Try It
-
-<https://kennethkn.github.io/cangjie-sucheng-lookup/>
-
-## :handshake: Contributing
+**Try it now :arrow_right: <https://kennethkn.github.io/cangjie-sucheng-lookup/>**
 
 Feel free to contribute to this project by creating issues or pull requests.
 
