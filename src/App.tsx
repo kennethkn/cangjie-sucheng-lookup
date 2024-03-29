@@ -20,8 +20,8 @@ function App() {
   const [resetBtnClicked, setResetBtnClicked] = useState(false)
   const [UndoBtnCountdown, setUndoBtnCountdown] = useState(5)
   const [hideClearBtn, setHideClearBtn] = useState(false)
-  const cangjieCodeMapRef = useRef<Map<string, string> | null>(null)
-  const radicalMapRef = useRef<Map<string, string> | null>(null)
+  const cangjieMapRef = useRef<Map<string, string> | null>(null)
+  const radicalsMapRef = useRef<Map<string, string> | null>(null)
   const undoTimerRef = useRef<number | null>(null)
 
   const handleTextChange = useCallback(
@@ -33,7 +33,7 @@ function App() {
       chars.forEach(c => {
         let cj
         try {
-          cj = cangjieCodeMapRef.current!.get(
+          cj = cangjieMapRef.current!.get(
             c.charCodeAt(0).toString(16).toUpperCase()
           )
           if (typeof cj === 'undefined') throw new Error()
@@ -47,7 +47,7 @@ function App() {
               showChi
                 ? cj
                     .split('')
-                    .map(ch => radicalMapRef.current!.get(ch.toLowerCase()))
+                    .map(ch => radicalsMapRef.current!.get(ch.toLowerCase()))
                     .join('')
                 : '',
               showEng ? cj : '',
@@ -87,17 +87,14 @@ function App() {
   }, [oldText])
 
   useEffect(() => {
-    Promise.all([
-      fetch('data/cangjie-codes.json'),
-      fetch('data/radical-mapping.json'),
-    ])
+    Promise.all([fetch('data/cangjie.json'), fetch('data/radicals.json')])
       .then(([r1, r2]) => {
         if (r1.ok && r2.ok) return Promise.all([r1.json(), r2.json()])
         else throw new Error()
       })
       .then(([json1, json2]: string[]) => {
-        cangjieCodeMapRef.current = new Map(Object.entries(json1))
-        radicalMapRef.current = new Map(Object.entries(json2))
+        cangjieMapRef.current = new Map(Object.entries(json1))
+        radicalsMapRef.current = new Map(Object.entries(json2))
       })
       .then(() => setText('打字喺度，對應嘅倉頡或速成碼就會喺下邊顯示！'))
       .catch(error => console.error(error))
@@ -110,9 +107,11 @@ function App() {
   }, [useSucheng, showChi, showEng, text, resetBtnClicked, handleTextChange])
 
   return (
-    <div className="flex h-auto min-h-screen flex-col bg-white px-7 pb-7 text-neutral-900 dark:bg-black dark:text-neutral-300 sm:px-10 sm:pb-10">
-      <div className="flex justify-end space-x-2 pt-2 text-sm dark:font-thin">
-        <a href="https://github.com/kennethkn" className="flex items-center">
+    <div className="flex h-auto min-h-screen flex-col bg-white px-7 pb-7 text-neutral-900 sm:px-10 sm:pb-10 dark:bg-black dark:text-neutral-300">
+      <div className="flex justify-end space-x-2 pt-2 text-sm">
+        <a
+          href="https://github.com/kennethkn"
+          className="flex items-center hover:underline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"
@@ -124,19 +123,19 @@ function App() {
         </a>
         <a
           href="https://www.linkedin.com/in/kenneth-kwan-6bb396262"
-          className="flex items-center">
+          className="flex items-center hover:underline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"
             viewBox="0 0 512 512"
-            className="mr-1 dark:fill-white">
+            className="mr-0.5 dark:fill-white">
             <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
           </svg>
           Kenneth Kwan
         </a>
         <a
           href="mailto:kennethhohinkwan@gmail.com"
-          className="flex items-center">
+          className="flex items-center hover:underline">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="1em"
@@ -147,11 +146,10 @@ function App() {
           Email
         </a>
       </div>
-      <div className="mb-3 mt-5 flex justify-center font-mono text-2xl lg:mb-4 lg:mt-3">
-        Chinese to Cangjie/Sucheng <br className="lg:hidden" />
-        Converter (C2CJ/SC)
+      <div className="mb-3 mt-5 flex justify-center text-center text-2xl lg:mb-4 lg:mt-3">
+        倉頡/速成查字 Cangjie/Sucheng Lookup
       </div>
-      <div className="flex justify-between bg-white pb-1 pt-1 dark:bg-black lg:h-9">
+      <div className="flex justify-between bg-white pb-1 pt-1 lg:h-9 dark:bg-black">
         <div className="flex flex-col pl-0.5 lg:flex-row lg:space-x-3">
           <label htmlFor="use-sucheng" className="flex items-center">
             <input
@@ -194,7 +192,7 @@ function App() {
           className={
             'h-7 border-2 px-1 font-bold dark:bg-neutral-900 ' +
             (resetBtnClicked
-              ? 'w-[5.25rem] border-blue-500 bg-blue-50 text-blue-500 hover:border-blue-700 active:bg-blue-100 dark:border-blue-800 dark:text-blue-700 dark:hover:border-blue-700 dark:active:bg-blue-950'
+              ? 'w-[5.25rem] border-blue-500 bg-blue-50 text-blue-500 hover:border-blue-800 active:bg-blue-100 dark:border-blue-700 dark:text-blue-600 dark:hover:border-blue-600 dark:active:bg-blue-950'
               : 'border-red-500 bg-red-50 text-red-500 hover:border-red-700 active:bg-red-100 dark:border-red-800 dark:text-red-700 dark:hover:border-red-700 dark:active:bg-red-950') +
             (hideClearBtn ? ' hidden' : '')
           }
@@ -208,7 +206,7 @@ function App() {
         aria-label="Chinese text to be converted"
         onChange={handleTextChange}
         value={text}
-        className="sticky top-0 mb-2 h-36 overscroll-contain rounded-none border-2 bg-neutral-50 p-1 shadow-md focus:border-neutral-900 focus:outline-none dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-neutral-900 dark:focus:border-neutral-300 dark:focus:shadow-neutral-600 sm:mb-1 lg:top-9"
+        className="sticky top-0 mb-2 h-36 overscroll-contain rounded-none border-2 bg-neutral-50 p-1 shadow-md focus:border-neutral-900 focus:outline-none sm:mb-1 lg:top-9 dark:border-neutral-600 dark:bg-neutral-900 dark:shadow-neutral-900 dark:focus:border-neutral-300 dark:focus:shadow-neutral-600"
         id="text"
         autoFocus></textarea>
       <div className="grid grid-cols-3 gap-2 sm:pt-1 md:grid-cols-6 lg:grid-cols-9 xl:grid-cols-12">
