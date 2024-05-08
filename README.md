@@ -8,8 +8,7 @@
   <p>
     Lookup Cangjie/Sucheng codes for Chinese characters and punctuations.
   </p>
-  <img src="./images/dark.jpeg" alt="App Preview (Dark)" width="256" />
-  <img src="./images/light.jpeg" alt="App Preview (Light)" width="256" />
+  <img src="mockup.jpeg" alt="App Preview (Dark)" width="" />
 </div>
 
 <br>
