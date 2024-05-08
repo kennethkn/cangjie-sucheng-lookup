@@ -147,7 +147,8 @@ function App() {
         </a>
       </div>
       <div className="mb-3 mt-5 flex justify-center text-center text-2xl lg:mb-4 lg:mt-3">
-        倉頡/速成查字 Cangjie/Sucheng Lookup
+        倉頡/速成查字 <br />
+        Cangjie/Sucheng Lookup
       </div>
       <div className="flex justify-between bg-white pb-1 pt-1 lg:h-9 dark:bg-black">
         <div className="flex flex-col pl-0.5 lg:flex-row lg:space-x-3">
