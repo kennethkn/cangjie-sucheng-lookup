@@ -191,9 +191,9 @@ function App() {
         </div>
         <button
           className={
-            'h-7 border-2 px-1 font-bold dark:bg-neutral-900 ' +
+            'h-7 border-2 px-2 font-bold dark:bg-neutral-900 ' +
             (resetBtnClicked
-              ? 'w-[5.25rem] border-blue-500 bg-blue-50 text-blue-500 hover:border-blue-700 active:bg-blue-100 dark:border-blue-700 dark:text-blue-600 dark:hover:border-blue-600 dark:active:bg-blue-950'
+              ? 'w-24 border-blue-500 bg-blue-50 text-blue-500 hover:border-blue-700 active:bg-blue-100 dark:border-blue-700 dark:text-blue-600 dark:hover:border-blue-600 dark:active:bg-blue-950'
               : 'border-red-500 bg-red-50 text-red-500 hover:border-red-700 active:bg-red-100 dark:border-red-800 dark:text-red-700 dark:hover:border-red-700 dark:active:bg-red-950') +
             (hideClearBtn ? ' hidden' : '')
           }
